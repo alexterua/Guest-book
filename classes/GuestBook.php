@@ -1,34 +1,15 @@
 <?php
 
-class GuestBook
+require_once __DIR__ . '/TextFile.php';
+
+class GuestBook extends TextFile
 {
-    protected $dataPath;
     protected $records;
-
-    public function __construct($path)
-    {
-        $this->dataPath = $path;
-
-        // Read from file
-        $fileHandler = fopen($this->dataPath, 'r');
-        while (!feof($fileHandler)) {
-            $this->records[] = fgets($fileHandler, 1024);
-        }
-        fclose($fileHandler);
-    }
 
     public function getData()
     {
         // Get array records
         return $this->records;
-    }
-
-    public function save($record)
-    {
-        // Write to file
-        $fileHandler = fopen($this->dataPath, 'a');
-        fwrite($fileHandler, $record . PHP_EOL);
-        fclose($fileHandler);
     }
 
     public function append($text)
