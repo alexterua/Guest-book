@@ -1,3 +1,11 @@
+<?php
+
+    /*echo '<pre>';
+    var_dump($guestBook);
+    echo '</pre>';
+    die;*/
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -13,16 +21,16 @@
         <h1 class="h1 mb-4" style="text-align: center;">Гостевая книга</h1>
         <div class="row col-md-12 mb-4">
             <ul class="guestbook__list list-group" style="width: 100%; justify-content: center; text-align: center;">
-                <?php foreach ($records as $record): ?>
-                <li class="list-group-item"><?php echo $record; ?></li>
+                <?php foreach ($guestBook->getRecords() as $record): ?>
+                <li class="list-group-item"><?php echo $record->getMessage(); ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
         <div class="row col-md-12 mb-4" style="justify-content: center; text-align: center;">
-            <form action="add-record.php" method="get">
+            <form action="../append.php" method="get">
                 <div class="form-group">
-                    <label for="add-record">Новая запись</label>
-                    <input type="text" class="form-control" name="add-record">
+                    <label for="message">Новая запись</label>
+                    <textarea class="form-control" name="message" idrows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>

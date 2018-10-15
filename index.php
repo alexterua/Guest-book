@@ -1,7 +1,11 @@
 <?php
 
-require_once __DIR__ . '/data.php';
+require_once __DIR__ . '/classes/GuestBook.php';
+require_once __DIR__ . '/classes/View.php';
 
-$records = $guestBook->getData();
+$guestBook = new GuestBook();
 
-require_once 'index.view.php';
+$view = new View();
+$view->assign('guestBook', $guestBook);
+echo $view->render('index.view.php');
+
